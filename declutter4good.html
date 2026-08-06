@@ -24,14 +24,17 @@
       --cream: #FDFAF6;
       --warm-gray: #8C8278;
 
-      /* Earthy Light Theme replacing Dark Green */
-      --black: #F5EFE4;       /* Beige base */
-      --off-black: #E2D9CC;   /* Darker beige / light brown */
-      --white: #2A2420;       /* Dark earthy text */
+      
+      --black: #F5EFE4;
+      
+      --off-black: #E2D9CC;
+      
+      --white: #2A2420;
+      
       --glass-dark: rgba(245, 239, 228, 0.65);
       --border-light: rgba(42, 36, 32, 0.1);
 
-      /* Orange highlights */
+      
       --orange-accent: var(--terra);
     }
 
@@ -91,13 +94,13 @@
       mix-blend-mode: normal;
     }
 
-    /* Smooth Scroll Container */
+   
     .smooth-scroll-wrapper {
       width: 100%;
       overflow: hidden;
     }
 
-    /* Premium Noise Overlay */
+    
     .noise {
       position: fixed;
       top: 0;
@@ -110,7 +113,7 @@
       background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
     }
 
-    /* NAV - Apple Glass */
+   
     nav {
       display: flex;
       justify-content: space-between;
@@ -175,7 +178,7 @@
       color: var(--white) !important;
     }
 
-    /* HERO - Cinematic */
+    
     .hero {
       height: 100vh;
       display: flex;
@@ -599,9 +602,316 @@
       display: flex;
       justify-content: space-between;
     }
-  </style>
 
- <meta name="google-site-verification" content="fHElFLEhprez2ghQe9P3MGhUVV8AvQCpLmGfiHdC9io" />
+    /* Mobile Navigation Toggle Button */
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 20px;
+      background: transparent;
+      border: none;
+      padding: 0;
+      z-index: 101;
+      cursor: pointer;
+    }
+
+    .mobile-menu-toggle span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+    }
+
+    .mobile-menu-toggle.active span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+      background-color: var(--orange-accent);
+    }
+
+    .mobile-menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-toggle.active span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+      background-color: var(--orange-accent);
+    }
+
+    /* Disable Custom Cursor on Touch / Mobile */
+    @media (hover: none), (max-width: 900px) {
+      html, body, a, button {
+        cursor: auto !important;
+      }
+      .custom-cursor {
+        display: none !important;
+      }
+    }
+
+    /* RESPONSIVE MEDIA QUERIES */
+    @media (max-width: 900px) {
+      nav {
+        padding: 16px 20px;
+      }
+
+      .mobile-menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(245, 239, 228, 0.98);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 100;
+      }
+
+      .nav-links.active {
+        transform: translateX(0);
+      }
+
+      .nav-links a {
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--white);
+      }
+
+      .nav-cta {
+        font-size: 18px !important;
+        padding: 14px 32px;
+        margin-top: 10px;
+      }
+
+      /* Hero */
+      .hero {
+        padding: 100px 20px 40px;
+        height: auto;
+        min-height: 100vh;
+      }
+
+      .hero-bg-gradient {
+        width: 90vw;
+        height: 90vw;
+      }
+
+      .hero-headline {
+        font-size: clamp(2.4rem, 8vw, 4.5rem);
+        margin-bottom: 24px;
+      }
+
+      .hero-sub {
+        font-size: clamp(15px, 4vw, 18px);
+        max-width: 100%;
+      }
+
+      .hero-eyebrow {
+        margin-bottom: 20px;
+      }
+
+      /* Stats */
+      .stats-section {
+        padding: 60px 20px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .stat-card {
+        padding: 24px 16px;
+        border-radius: 16px;
+      }
+
+      .stat-num {
+        font-size: clamp(24px, 6vw, 32px);
+      }
+
+      .stat-label {
+        font-size: 13px;
+      }
+
+      /* Quote */
+      .quote-section {
+        height: auto;
+        min-height: 45vh;
+        padding: 60px 20px;
+      }
+
+      .quote-section p {
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
+      }
+
+      /* Process (How It Works) */
+      .process-section {
+        height: 100vh;
+        padding: 80px 0;
+      }
+
+      .process-header {
+        margin-bottom: 40px;
+        padding: 0 20px;
+      }
+
+      .process-header h2 {
+        font-size: clamp(32px, 7vw, 48px);
+      }
+
+      .process-container {
+        padding: 0 20px;
+        gap: 20px;
+      }
+
+      .process-card {
+        width: clamp(280px, 80vw, 400px);
+        height: clamp(380px, 60vh, 460px);
+        padding: 30px 24px;
+        border-radius: 20px;
+      }
+
+      .process-num {
+        font-size: clamp(60px, 12vw, 80px);
+      }
+
+      .process-card h3 {
+        font-size: clamp(22px, 5vw, 28px);
+        margin-bottom: 12px;
+      }
+
+      .process-card p {
+        font-size: clamp(14px, 3.5vw, 16px);
+      }
+
+      /* Included */
+      .included-section {
+        padding: 80px 20px;
+      }
+
+      .included-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .included-left h2 {
+        font-size: clamp(32px, 7vw, 48px);
+        margin-bottom: 16px;
+      }
+
+      .included-left p {
+        font-size: clamp(15px, 4vw, 18px);
+        margin-bottom: 24px;
+      }
+
+      .include-item {
+        padding: 20px 0;
+        gap: 16px;
+      }
+
+      .include-text strong {
+        font-size: 18px;
+      }
+
+      .include-text span {
+        font-size: 14px;
+      }
+
+      /* About */
+      .about-section {
+        padding: 80px 20px;
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-image-wrapper {
+        height: clamp(320px, 50vh, 500px);
+        border-radius: 16px;
+      }
+
+      .about-right h2 {
+        font-size: clamp(32px, 7vw, 48px);
+        margin-bottom: 24px;
+      }
+
+      .about-right p {
+        font-size: clamp(15px, 4vw, 18px);
+        margin-bottom: 20px;
+      }
+
+      .pill-container {
+        margin-top: 24px;
+      }
+
+      .luxury-pill {
+        padding: 10px 18px;
+        font-size: 13px;
+      }
+
+      /* Book CTA */
+      .cta-section {
+        height: auto;
+        min-height: 60vh;
+        padding: 80px 20px;
+        border-top-left-radius: 36px;
+        border-top-right-radius: 36px;
+      }
+
+      .cta-section h2 {
+        font-size: clamp(2.5rem, 8vw, 4.5rem);
+        margin-bottom: 16px;
+      }
+
+      .cta-section p {
+        font-size: clamp(16px, 4vw, 20px);
+        margin-bottom: 32px;
+      }
+
+      .btn-dark {
+        padding: 16px 40px;
+        font-size: 16px;
+      }
+
+      /* Footer */
+      footer {
+        padding: 30px 20px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-btns {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .btn-dark {
+        width: 100%;
+        max-width: 280px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        align-items: center;
+      }
+    }
+</style>
+<meta name="description" content="Declutter4Good offers personalized home decluttering services across the UAE, connecting items to charities and supporting single moms and cancer survivors.">
 </head>
 
 <body>
@@ -609,8 +919,14 @@
   <div class="custom-cursor"></div>
   <div class="noise"></div>
 
+<header>
   <nav>
     <div class="nav-logo">Declutter<span>4</span>Good</div>
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <ul class="nav-links">
       <li><a href="#works">How it works</a></li>
       <li><a href="#included">Included</a></li>
@@ -618,7 +934,8 @@
       <li><a href="#book" class="nav-cta">Book Session</a></li>
     </ul>
   </nav>
-
+</header>
+<main>
   <div class="smooth-scroll-wrapper">
 
     <!-- HERO -->
@@ -632,7 +949,9 @@
           <span class="line">Giving back <em>for good.</em></span>
         </h1>
         <p class="hero-sub">
-          I come to your home, we sort together, and every item finds its highest purpose to Single Moms & Cancer Survivors/Patients. No judgement. Just clarity. All done with fun!
+          I come to your home, we sort together, and every item finds its highest purpose to Single Moms & Cancer
+          Survivors/Patients. No judgement. Just clarity.
+          All done WITH FUN!
         </p>
       </div>
     </section>
@@ -667,15 +986,17 @@
     <!-- HORIZONTAL SCROLL - HOW IT WORKS -->
     <section id="works" class="process-section">
       <div class="process-header">
-        <h2>The Process</h2> 
+        <h2>The Process</h2>
       </div>
       <div class="process-container">
         <div class="process-card">
           <div class="process-num">01</div>
           <div>
             <h3>We connect</h3>
-            <p>A short call to understand your home, your timeline, and what's weighing on you. A perfect starting point for your reset.
-                I also do home visits to assess the decluttering needed and to be able to give you an accurate quotation.</p>
+            <p>A short call to understand your home, your timeline, and what's weighing on you. A perfect starting point
+              for your reset.
+              I also do home visits to assess the decluttering needed and to be able to give you an accurate quotation.
+            </p>
           </div>
         </div>
         <div class="process-card">
@@ -690,7 +1011,10 @@
           <div class="process-num">03</div>
           <div>
             <h3>It goes to good</h3>
-            <p>Donated items are handled with care - either to Single Moms or Cancer Patients & Survivors. Whatever doesn’t get donated to them, goes to Thrift4Good or Hope Amel.  Your space clears, someone else's life improves.</p>
+            <p>
+              Donated items are handled with care - either to Single Moms or Cancer Patients & Survivors. Whatever
+              doesn’t get donated to them, goes to Thrift4Good or Hope Amel. Your space clears, someone else's life
+              improves.</p>
           </div>
         </div>
         <!-- Empty card for padding in horizontal scroll -->
@@ -747,11 +1071,20 @@
       </div>
       <div class="about-right">
         <h2 class="about-title">The <em>person</em> behind the service.</h2>
-        <p>Hi, I'm Doua ! Dubai-based and passionate about intentional living. Declutter4Good grew from a simple belief: that the way we live in our spaces shapes how we feel in our lives. As a single mom and Cancer survivor, I know the struggles of living in the UAE at times - I’ve faced my demons, and I’m now on the other side and it’s my turn to give back. </p>
-        <p> I’ve heard and seen enough stories to know that there is a gap in our life everywhere in the world: some people live with excess, and others with less than! So why not help you clear your space, your mind, and donate the items to people that need it - and what better way for e to do so, to my community, my people: Single moms & Cancer Survivors/Patients. </p>
-        <p>I bring warmth, zero judgement, and a practical eye to every home I work in. My goal is never to strip your space - it's to help you find what truly belongs there.</p>
+        <p>Hi, I'm Doua ! Dubai-based and passionate about intentional living. Declutter4Good grew from a simple belief:
+          that the way we live in our spaces shapes how we feel in our lives. As a single mom and Cancer survivor, I
+          know the struggles of living in the UAE at times - I’ve faced my demons, and I’m now on the other side and
+          it’s my turn to give back. </p>
+        <p>I’ve heard and seen enough stories to know that there is a gap in our life everywhere in the world: some
+          people live with excess, and others with less than! So why not help you clear your space, your mind, and
+          donate the items to people that need it - and what better way for e to do so, to my community, my people:
+          Single moms & Cancer Survivors/Patients. </p>
+        <p>I bring warmth, zero judgement, and a practical eye to every home I work in. My goal is never to strip your
+          space - it's to help you find what truly belongs there.</p>
         <div class="pill-container">
-          <p> I also provide additional services, if you’re ever interested, please click below and send me a request! </p>
+
+          <p> I also provide additional services, if you’re ever interested, please click below and send me a request !
+          </p>
           <div class="luxury-pill">MC & Event Hosting</div>
           <div class="luxury-pill">Public Speaking</div>
           <div class="luxury-pill">Photography</div>
@@ -775,9 +1108,10 @@
     </footer>
 
   </div>
+</main>
 
   <script>
-    // Custom Cursor Logic
+    
     const cursor = document.querySelector('.custom-cursor');
     document.addEventListener('mousemove', (e) => {
       cursor.style.left = e.clientX + 'px';
@@ -790,7 +1124,7 @@
       el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
 
-    // Initialize Lenis for Smooth Scrolling
+    
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -803,10 +1137,9 @@
     }
     requestAnimationFrame(raf);
 
-    // Initialize GSAP ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
-    // --- 1. HERO LOAD ANIMATIONS ---
+    
     const tl = gsap.timeline();
 
     tl.to(".hero-eyebrow", {
@@ -821,7 +1154,7 @@
         opacity: 1, y: 0, duration: 1, ease: "power3.out"
       }, "-=0.8");
 
-    // --- 2. STATS REVEAL ---
+    
     gsap.to(".stat-card", {
       scrollTrigger: {
         trigger: ".stats-section",
@@ -830,7 +1163,7 @@
       y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "back.out(1.7)"
     });
 
-    // --- 3. QUOTE PARALLAX ---
+
     gsap.to(".quote-text", {
       scrollTrigger: {
         trigger: ".quote-section",
@@ -840,7 +1173,7 @@
       scale: 1.1, opacity: 1
     });
 
-    // --- 4. HORIZONTAL SCROLL (HOW IT WORKS) ---
+    
     const processContainer = document.querySelector('.process-container');
 
     gsap.to(processContainer, {
@@ -856,7 +1189,7 @@
       }
     });
 
-    // --- 5. WHAT'S INCLUDED LIST ---
+   
     gsap.to(".include-title", {
       scrollTrigger: { trigger: ".included-section", start: "top 70%" },
       opacity: 1, y: 0, duration: 1, ease: "power3.out"
@@ -878,7 +1211,7 @@
       opacity: 0, y: 50, duration: 1, ease: "power3.out"
     });
 
-    // --- 7. CTA SECTION REVEAL ---
+    
     gsap.from(".cta-section h2, .cta-section p, .cta-btns", {
       scrollTrigger: {
         trigger: ".cta-section",
@@ -887,9 +1220,29 @@
       y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out"
     });
 
+    
+    const mobileNavToggle = document.querySelector('.mobile-menu-toggle');
+    const mainNavLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-links a');
 
+    if (mobileNavToggle && mainNavLinks) {
+      mobileNavToggle.addEventListener('click', () => {
+        mobileNavToggle.classList.toggle('active');
+        mainNavLinks.classList.toggle('active');
+      });
 
+      navItems.forEach(item => {
+        item.addEventListener('click', () => {
+          mobileNavToggle.classList.remove('active');
+          mainNavLinks.classList.remove('active');
+        });
+      });
+    }
 
+   
+    window.addEventListener('resize', () => {
+      ScrollTrigger.refresh();
+    });
   </script>
 </body>
 
