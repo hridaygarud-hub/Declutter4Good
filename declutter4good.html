@@ -24,17 +24,17 @@
       --cream: #FDFAF6;
       --warm-gray: #8C8278;
 
-      
+      /* Earthy Light Theme replacing Dark Green */
       --black: #F5EFE4;
-      
+      /* Beige base */
       --off-black: #E2D9CC;
-      
+      /* Darker beige / light brown */
       --white: #2A2420;
-      
+      /* Dark earthy text */
       --glass-dark: rgba(245, 239, 228, 0.65);
       --border-light: rgba(42, 36, 32, 0.1);
 
-      
+      /* Orange highlights */
       --orange-accent: var(--terra);
     }
 
@@ -94,13 +94,13 @@
       mix-blend-mode: normal;
     }
 
-   
+    /* Smooth Scroll Container */
     .smooth-scroll-wrapper {
       width: 100%;
       overflow: hidden;
     }
 
-    
+    /* Premium Noise Overlay */
     .noise {
       position: fixed;
       top: 0;
@@ -113,7 +113,7 @@
       background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
     }
 
-   
+    /* NAV - Apple Glass */
     nav {
       display: flex;
       justify-content: space-between;
@@ -178,7 +178,7 @@
       color: var(--white) !important;
     }
 
-    
+    /* HERO - Cinematic */
     .hero {
       height: 100vh;
       display: flex;
@@ -931,7 +931,7 @@
       <li><a href="#works">How it works</a></li>
       <li><a href="#included">Included</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#book" class="nav-cta">Book Session</a></li>
+      <li><a href="https://calendly.com/d-benhida/30min" target="_blank" rel="noopener noreferrer" class="nav-cta">Book Session</a></li>
     </ul>
   </nav>
 </header>
@@ -1098,12 +1098,14 @@
       <h2>Ready to breathe again?</h2>
       <p>Sessions available across the UAE.</p>
       <div class="cta-btns">
-        <button class="btn-dark">Book a session</button>
+        <a href="https://calendly.com/d-benhida/30min" target="_blank" rel="noopener noreferrer" class="btn-dark" style="text-decoration: none; display: inline-block;">Book a session</a>
       </div>
+      <p style="margin-top: 24px; font-size: 16px; opacity: 0.9;">Or reach out directly: <a href="mailto:d.benhida@gmail.com" style="color: var(--white); font-weight: 600; text-decoration: underline;">d.benhida@gmail.com</a></p>
     </section>
 
     <footer>
       <div>Declutter4Good</div>
+      <div><a href="mailto:d.benhida@gmail.com" style="color: var(--white); text-decoration: none; opacity: 0.9;">d.benhida@gmail.com</a></div>
       <div>© 2026 · UAE</div>
     </footer>
 
@@ -1111,7 +1113,7 @@
 </main>
 
   <script>
-    
+    // Custom Cursor Logic
     const cursor = document.querySelector('.custom-cursor');
     document.addEventListener('mousemove', (e) => {
       cursor.style.left = e.clientX + 'px';
@@ -1124,7 +1126,7 @@
       el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
 
-    
+    // Initialize Lenis for Smooth Scrolling
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -1137,9 +1139,10 @@
     }
     requestAnimationFrame(raf);
 
+    // Initialize GSAP ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
-    
+    // --- 1. HERO LOAD ANIMATIONS ---
     const tl = gsap.timeline();
 
     tl.to(".hero-eyebrow", {
@@ -1154,7 +1157,7 @@
         opacity: 1, y: 0, duration: 1, ease: "power3.out"
       }, "-=0.8");
 
-    
+    // --- 2. STATS REVEAL ---
     gsap.to(".stat-card", {
       scrollTrigger: {
         trigger: ".stats-section",
@@ -1163,7 +1166,7 @@
       y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "back.out(1.7)"
     });
 
-
+    // --- 3. QUOTE PARALLAX ---
     gsap.to(".quote-text", {
       scrollTrigger: {
         trigger: ".quote-section",
@@ -1173,7 +1176,7 @@
       scale: 1.1, opacity: 1
     });
 
-    
+    // --- 4. HORIZONTAL SCROLL (HOW IT WORKS) ---
     const processContainer = document.querySelector('.process-container');
 
     gsap.to(processContainer, {
@@ -1189,7 +1192,7 @@
       }
     });
 
-   
+    // --- 5. WHAT'S INCLUDED LIST ---
     gsap.to(".include-title", {
       scrollTrigger: { trigger: ".included-section", start: "top 70%" },
       opacity: 1, y: 0, duration: 1, ease: "power3.out"
@@ -1211,7 +1214,7 @@
       opacity: 0, y: 50, duration: 1, ease: "power3.out"
     });
 
-    
+    // --- 7. CTA SECTION REVEAL ---
     gsap.from(".cta-section h2, .cta-section p, .cta-btns", {
       scrollTrigger: {
         trigger: ".cta-section",
@@ -1220,7 +1223,7 @@
       y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out"
     });
 
-    
+    // --- 8. MOBILE MENU TOGGLE & RESIZE REFRESH ---
     const mobileNavToggle = document.querySelector('.mobile-menu-toggle');
     const mainNavLinks = document.querySelector('.nav-links');
     const navItems = document.querySelectorAll('.nav-links a');
@@ -1239,7 +1242,7 @@
       });
     }
 
-   
+    // Refresh ScrollTrigger on window resize to ensure horizontal scroll calculations remain accurate
     window.addEventListener('resize', () => {
       ScrollTrigger.refresh();
     });
